@@ -45,12 +45,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db = this.getWritableDatabase();
     }
 
-    public void inserttask(ToDoModel task){
+    /*public void inserttask(ToDoModel task){
         ContentValues cv = new ContentValues();
         cv.put(TASK, task.getTask());
         cv.put(STATUS,0);
         db.insert(TODO_TABLE, null, cv);
-    }
+    }*/
 
     public List<ToDoModel> getAllTasks(){
         List<ToDoModel> taskList = new ArrayList<>();
@@ -91,5 +91,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public void deleteTask(int id){
         db.delete(TODO_TABLE, ID + "= ?", new String[] {String.valueOf(id)});
+    }
+
+    public void insertTask(ToDoModel task) {
+        ContentValues cv = new ContentValues();
+        cv.put(TASK, task.getTask());
+        cv.put(STATUS,0);
+        db.insert(TODO_TABLE, null, cv);
     }
 }
